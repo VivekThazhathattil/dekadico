@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         recall_view.setMovementMethod(new ScrollingMovementMethod());
         app_running = Boolean.FALSE;
 
-        time_delay = (float) 1000;
+        time_delay = (float) 1;
         enter_button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String time_delay_str = time_delay_input.getText().toString();
