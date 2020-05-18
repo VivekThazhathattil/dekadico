@@ -59,11 +59,8 @@ public class MainActivity extends AppCompatActivity {
         time_delay = (float) 1000;
         enter_button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Log.e("Random number", "check fail1 !!!!!!!!!!");
                 String time_delay_str = time_delay_input.getText().toString();
-                Log.e("Random number", "check fail2 !!!!!!!!!! = ");
                 if(time_delay_str.isEmpty()){
-                    Log.e("Random number", "check fail3 !!!!!!!!!!");
                     time_delay = (float) 0.01;
                 }
                 else {
@@ -103,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 if (app_running == Boolean.FALSE) {
                     rand_num_list.clear();
                     app_running = Boolean.TRUE;
+                    recall_view.setText("");
+
                     recall_button.setVisibility(View.VISIBLE);
                     recall_view.setVisibility(View.INVISIBLE);
                     next_button.setVisibility(View.INVISIBLE);
