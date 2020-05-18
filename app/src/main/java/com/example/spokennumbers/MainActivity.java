@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     time_delay_text.setVisibility(View.INVISIBLE);
                     enter_button.setVisibility(View.INVISIBLE);
 
-                    timer = new CountDownTimer(300000, (int)(time_delay*1000)) {
+                    timer = new CountDownTimer(3600000, (int)(time_delay*1000)) {
 
                         @Override
                         public void onTick(long millisinFuture) {
