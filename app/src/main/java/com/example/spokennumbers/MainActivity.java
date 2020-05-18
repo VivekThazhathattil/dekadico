@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     time_delay = new Float(time_delay_str);
+                    if (time_delay == 0.0)
+                        time_delay = (float) 1;
                 }
             }
         });
