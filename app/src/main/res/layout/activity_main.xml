@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -12,38 +13,41 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/recall_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time_delay_text"
-        app:srcCompat="@drawable/button_background" />
+        app:layout_constraintTop_toBottomOf="@+id/time_delay_input"
+        app:srcCompat="@drawable/ic_speaker" />
 
     <Button
         android:id="@+id/recall_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginRight="128dp"
         android:text="Recall"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recall_view" />
 
     <TextView
         android:id="@+id/recall_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:scrollbars="vertical"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/recall_button"
         app:layout_constraintEnd_toStartOf="@+id/next_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,40 +57,62 @@
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text=">>"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/recall_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recall_view"
         app:layout_constraintTop_toBottomOf="@+id/speaker_button" />
 
     <TextView
         android:id="@+id/time_delay_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Enter time delay:"
-        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Time delay:"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/time_delay_input"
-        app:layout_constraintEnd_toStartOf="@+id/time_delay_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/time_delay_input" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/time_delay_input"
-        android:layout_width="93dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:hint="0.00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="1.00"
         android:inputType="numberDecimal"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/speaker_button"
         app:layout_constraintEnd_toStartOf="@+id/enter_button"
+        app:layout_constraintStart_toEndOf="@+id/time_delay_text"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/enter_button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="OK"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/time_delay_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/time_delay_input"
+        app:layout_constraintTop_toTopOf="@+id/time_delay_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,9 +19,12 @@ This program is only available for android devices. An effort to bring this to F
 
 ### Problems?
 
-For any problems relating to this app, please create a new 'issue' in GitHub. You can also contact me directly at my email, vivek.thazhathattil@gmail.com and I will try to help.
+For any problems relating to this app, please create a new 'issue' in this GitHub repo. You can also contact me directly at my email, and I will try to help.
+
+### Contact
+
+If you have any questions, bug reports or other wishes, feel free to contact me on vivek.thazhathattil@gmail.com. I'll respond to you at the earliest.
 
 ### License
 
 The DekaDico repository is available under the MIT License.
-

@@ -2,17 +2,20 @@ package com.example.spokennumbers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.media.AudioManager;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     time_delay = (float) 0.01;
                 }
                 else {
-                    time_delay = new Float(time_delay_str);
+                    time_delay = Float.valueOf(time_delay_str);
                     if (time_delay == 0.0)
                         time_delay = (float) 1;
                 }
@@ -82,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 time_delay_text.setVisibility(View.VISIBLE);
                 enter_button.setVisibility(View.VISIBLE);
 
+                ImageView img_button = findViewById(R.id.speaker_button);
+                img_button.setImageResource(R.drawable.ic_speaker);
+
                 timer.cancel();
                 recall_string = "";
                 counter = 0;
@@ -97,13 +103,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        speaker_button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        speaker_button.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN && !app_running) {
+                    // scale your value
+                    float reducedvalue = (float)0.9;
+                    v.setScaleX(reducedvalue);
+                    v.setScaleY(reducedvalue);
+                }
+                else if (event.getAction() == MotionEvent.ACTION_UP && !app_running) {
+                    v.setScaleX(1);
+                    v.setScaleY(1);
+                }
                 if (app_running == Boolean.FALSE) {
                     rand_num_list.clear();
                     app_running = Boolean.TRUE;
                     recall_view.setText("");
-
+                    ImageView img_button = (ImageView) findViewById(R.id.speaker_button);
+                    img_button.setImageResource(R.drawable.ic_speaker_stop);
                     recall_button.setVisibility(View.VISIBLE);
                     recall_view.setVisibility(View.INVISIBLE);
                     next_button.setVisibility(View.INVISIBLE);
@@ -138,12 +156,15 @@ public class MainActivity extends AppCompatActivity {
                         public void onFinish() {
                             try {
                                 app_running = Boolean.FALSE;
+                                ImageView img_button = (ImageView) findViewById(R.id.speaker_button);
+                                img_button.setImageResource(R.drawable.ic_speaker);
                             } catch (Exception e) {
                                 Log.e("Error", "Error: " + e.toString());
                             }
                         }
                     }.start();
                 }
+                return false;
             }
         });
 
