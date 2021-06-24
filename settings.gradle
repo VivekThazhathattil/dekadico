@@ -1,2 +1,2 @@
-rootProject.name='Spoken numbers'
+rootProject.name='DékaDico'
 include ':app'
