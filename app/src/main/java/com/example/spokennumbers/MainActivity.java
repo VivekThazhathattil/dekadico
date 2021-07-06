@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         recall_view.setVisibility(View.INVISIBLE);
         next_button.setVisibility(View.INVISIBLE);
         time_delay_input.setVisibility(View.VISIBLE);
+        time_delay_input.setText("1.00");
         time_delay_text.setVisibility(View.VISIBLE);
         enter_button.setVisibility(View.VISIBLE);
 
