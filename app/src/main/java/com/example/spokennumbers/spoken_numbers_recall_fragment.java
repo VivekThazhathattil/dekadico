@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class spoken_numbers_recall_fragment extends Fragment {
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        final Button oneSolnButton = getView().findViewById(R.id.one_soln_button);
-        final Button allSolnButton = getView().findViewById(R.id.all_soln_button);
-        final Button noSolnButton = getView().findViewById(R.id.no_soln_button);
-        final Button returnButton = getView().findViewById(R.id.exit_to_menu_button);
+        final ImageButton oneSolnButton = getView().findViewById(R.id.one_soln_button);
+        final ImageButton allSolnButton = getView().findViewById(R.id.all_soln_button);
+        final ImageButton noSolnButton = getView().findViewById(R.id.no_soln_button);
+        final ImageButton returnButton = getView().findViewById(R.id.exit_to_menu_button);
         answerView = getView().findViewById(R.id.answer_text);
         recallString = "";
         counter = 0;

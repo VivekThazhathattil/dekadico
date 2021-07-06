@@ -4,13 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 
 /**
@@ -20,8 +18,7 @@ import android.widget.TextView;
  */
 public class spoken_numbers_main_fragment extends Fragment {
 
-    private static Button startButton;
-//    private static Button okButton;
+    private static ImageButton startButton;
     private static EditText timeDelayInput;
 
     public spoken_numbers_main_fragment() {
@@ -50,7 +47,6 @@ public class spoken_numbers_main_fragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         startButton = getView().findViewById(R.id.start_button);
-//        okButton = getView().findViewById(R.id.time_delay_button);
         timeDelayInput = getView().findViewById(R.id.time_delay_input);
         timeDelayInput.setText("1.00");
         startButton.setOnClickListener(new View.OnClickListener(){

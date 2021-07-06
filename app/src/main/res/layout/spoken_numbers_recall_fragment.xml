@@ -20,33 +20,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/one_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=">" />
+                android:src="@android:drawable/ic_media_next" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/all_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=">>" />
+                android:src="@android:drawable/ic_media_ff" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/no_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="no" />
+                android:src="@android:drawable/ic_media_rew" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/exit_to_menu_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Menu" />
+                android:src="@android:drawable/ic_menu_revert" />
         </LinearLayout>
 
         <ScrollView
@@ -63,7 +63,7 @@
                 android:id="@+id/answer_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-" />
+                android:textSize="50sp" />
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

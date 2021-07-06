@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,32 +22,19 @@ import java.util.Timer;
 public class spoken_numbers_ingame_fragment extends Fragment {
     private float timeDelay;
     private ArrayList<Integer> rand_num_list = new ArrayList<Integer>();
+    private Boolean appRunning;
+    private long millisLeft;
+    private CountDownTimer timer;
 
     public spoken_numbers_ingame_fragment(float td) {
         this.timeDelay = td;
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.spoken_numbers_ingame_fragment, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
-        Button pauseButton = getView().findViewById(R.id.pause_button);
-        Button recallButton = getView().findViewById(R.id.recall_button);
-
-        rand_num_list.clear();
-        final CountDownTimer timer = new CountDownTimer(3600000,(int)(timeDelay*1000) ) {
+    public CountDownTimer setupTimer(long timeLeft, float interval){
+        CountDownTimer timer = new CountDownTimer(timeLeft,(int)(interval*1000) ) {
             @Override
             public void onTick(long millisUntilFinished) {
+                millisLeft = millisUntilFinished;
                 Random r = new Random();
                 int rand_num = r.nextInt(10);
                 rand_num_list.add(rand_num);
@@ -67,7 +55,31 @@ public class spoken_numbers_ingame_fragment extends Fragment {
 
             }
         };
+        return timer;
+    }
 
+        @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.spoken_numbers_ingame_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        final ImageButton pauseButton = getView().findViewById(R.id.pause_button);
+        final Button recallButton = getView().findViewById(R.id.recall_button);
+        appRunning = true;
+        millisLeft = 3600000;
+
+        rand_num_list.clear();
+        timer = setupTimer(millisLeft, timeDelay);
         timer.start();
 
         recallButton.setOnClickListener(new View.OnClickListener(){
@@ -78,7 +90,17 @@ public class spoken_numbers_ingame_fragment extends Fragment {
         });
         pauseButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                timer.cancel();
+                if(appRunning) {
+                    timer.cancel();
+                    pauseButton.setImageResource(android.R.drawable.ic_media_play);
+                    appRunning = false;
+                }
+                else {
+                    timer = setupTimer(millisLeft, timeDelay);
+                    timer.start();
+                    pauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                    appRunning = true;
+                }
             }
         });
     }

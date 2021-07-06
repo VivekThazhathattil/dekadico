@@ -22,11 +22,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/start_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Start" />
+                android:src="@android:drawable/ic_media_play" />
 
             <LinearLayout
                 android:id="@+id/time_delay_container"
