@@ -6,6 +6,10 @@ This repository contains the source code for the DekaDico Android app.
 
 It's a memory training app, which is intended for those interested in improving their recall skills of spoken numbers. 'Spoken Numbers' is a discipline in all memory competitions. The aim is to commit to memory and recall as many Spoken Numbers as possible, which are read out at a pace of 1 digit per second. Getting better at such a skill would not just improve your memory skills, but also enhance your focus and concentration.
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.example.spokennumbers/)
+
 ### Features
 
 - Minimal, no clutter display
