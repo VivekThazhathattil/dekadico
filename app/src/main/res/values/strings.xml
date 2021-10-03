@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time_inc_text">+0.50</string>
+    <string name="time_dec_text">-0.50</string>
+    <string name="time_control_text">TIME CONTROL:</string>
+    <string name="recall_text">RECALL</string>
+    <string name="curr_time_control_text">1.00 s</string>
 </resources>

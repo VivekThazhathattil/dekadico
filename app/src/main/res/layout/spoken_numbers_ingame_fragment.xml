@@ -22,6 +22,42 @@
             android:id="@+id/recall_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recall" />
+            android:text="@string/recall_text" />
+
+        <TextView
+            android:id="@+id/time_control_header"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="bottom"
+            android:text="@string/time_control_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/time_decrement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/time_dec_text" />
+
+            <TextView
+                android:id="@+id/current_time_control_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/curr_time_control_text"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/time_increment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/time_inc_text" />
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

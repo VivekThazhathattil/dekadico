@@ -20,6 +20,9 @@ public class spoken_numbers_main_fragment extends Fragment {
 
     private static ImageButton startButton;
     private static EditText timeDelayInput;
+    private static EditText timeIncInput;
+    private float defaultTimeDelay;
+    private float defaultTimeInc;
 
     public spoken_numbers_main_fragment() {
         // Required empty public constructor
@@ -48,20 +51,39 @@ public class spoken_numbers_main_fragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         startButton = getView().findViewById(R.id.start_button);
         timeDelayInput = getView().findViewById(R.id.time_delay_input);
-        timeDelayInput.setText("1.00");
+        timeIncInput = getView().findViewById(R.id.time_inc_num);
+        defaultTimeDelay = (float)1.00;
+        defaultTimeInc = (float)0.25;
+        timeDelayInput.setText(Float.toString(defaultTimeDelay));
+        timeIncInput.setText(Float.toString(defaultTimeInc));
+
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String timeDelayStr = timeDelayInput.getText().toString();
+                String timeIncStr = timeIncInput.getText().toString();
+
                 Float timeDelayNum;
+                Float timeIncNum;
+
                 if(!timeDelayStr.matches("\\d+(?:\\.\\d+)?")){ //not a number
-                    timeDelayNum = (float) 1.0;
+                    timeDelayNum = (float) defaultTimeDelay;
                 }
                 else{
                     timeDelayNum = Float.valueOf(timeDelayStr);
-                    if(timeDelayNum == 0)
-                        timeDelayNum = (float)1.0;
+                    if(timeDelayNum <= 0.1)
+                        timeDelayNum = (float)defaultTimeDelay;
                 }
-                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum);
+
+                if(!timeIncStr.matches("\\d+(?:\\.\\d+)?")){ //not a number
+                    timeIncNum = (float) defaultTimeInc;
+                }
+                else{
+                    timeIncNum = Float.valueOf(timeIncStr);
+                    if(timeIncNum <= 0.1)
+                        timeIncNum = (float)defaultTimeInc;
+                }
+
+                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum);
             }
         });
     }

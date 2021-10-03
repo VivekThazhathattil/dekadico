@@ -13,13 +13,14 @@ It's a memory training app, which is intended for those interested in improving 
 ### Features
 
 - Minimal, no clutter display
-- Customizable time delay between numbers
+- Customizable time delay between spoken numbers
 - No overall time restrictions
 - Easy to use recall system
+- Increment/Decrement time delays on the fly, to adjust to your current memorizing speed
 
 ### Running the Program
 
-This program is only available for android devices. An effort to bring this to FDroid software repository is underway.
+This program is only available for android devices. It is readily avaiable for installation from [FDroid](https://f-droid.org/packages/com.example.spokennumbers/) Repository or from Github [releases](https://github.com/VivekThazhathattil/dekadico/releases).
 
 ### Problems?
 

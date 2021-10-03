@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,13 +22,16 @@ import java.util.Timer;
 
 public class spoken_numbers_ingame_fragment extends Fragment {
     private float timeDelay;
+    private float timeInc;
     private ArrayList<Integer> rand_num_list = new ArrayList<Integer>();
     private Boolean appRunning;
+    private long defaultMillisLeft;
     private long millisLeft;
     private CountDownTimer timer;
 
-    public spoken_numbers_ingame_fragment(float td) {
+    public spoken_numbers_ingame_fragment(float td, float ti) {
         this.timeDelay = td;
+        this.timeInc = ti;
     }
 
     public CountDownTimer setupTimer(long timeLeft, float interval){
@@ -35,6 +39,9 @@ public class spoken_numbers_ingame_fragment extends Fragment {
             @Override
             public void onTick(long millisUntilFinished) {
                 millisLeft = millisUntilFinished;
+                if(millisLeft >= defaultMillisLeft - timeDelay * 1000){
+                    return;
+                }
                 Random r = new Random();
                 int rand_num = r.nextInt(10);
                 rand_num_list.add(rand_num);
@@ -52,7 +59,6 @@ public class spoken_numbers_ingame_fragment extends Fragment {
 
             @Override
             public void onFinish() {
-
             }
         };
         return timer;
@@ -75,12 +81,47 @@ public class spoken_numbers_ingame_fragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         final ImageButton pauseButton = getView().findViewById(R.id.pause_button);
         final Button recallButton = getView().findViewById(R.id.recall_button);
+        final Button decrementButton = getView().findViewById(R.id.time_decrement);
+        final Button incrementButton = getView().findViewById(R.id.time_increment);
+        final TextView currentTimeTextView = getView().findViewById(R.id.current_time_control_text);
+
+        String timeIncStr = "+" + timeInc;
+        String timeDecStr = "-" + timeInc;
+        incrementButton.setText(timeIncStr);
+        decrementButton.setText(timeDecStr);
+
         appRunning = true;
-        millisLeft = 3600000;
+        defaultMillisLeft = 3600000;
+        millisLeft = defaultMillisLeft;
 
         rand_num_list.clear();
         timer = setupTimer(millisLeft, timeDelay);
         timer.start();
+
+        incrementButton.setOnClickListener(new View.OnClickListener(){
+           public void onClick(View v){
+                timeDelay += timeInc;
+               String currTimeText = timeDelay + "s";
+               currentTimeTextView.setText(currTimeText);
+               timer.cancel();
+                timer = setupTimer(defaultMillisLeft, timeDelay);
+                timer.start();
+            }
+        });
+
+        decrementButton.setOnClickListener(new View.OnClickListener(){
+           public void onClick(View v){
+               if(timeDelay - timeInc < 0.1){
+                  return;
+               }
+               timeDelay -= timeInc;
+               String currTimeText = timeDelay + "s";
+               currentTimeTextView.setText(currTimeText);
+               timer.cancel();
+               timer = setupTimer(defaultMillisLeft, timeDelay);
+               timer.start();
+           }
+        });
 
         recallButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -88,6 +129,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                 ((MainActivity)getActivity()).switchToRecallFragment(rand_num_list);
             }
         });
+
         pauseButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if(appRunning) {
