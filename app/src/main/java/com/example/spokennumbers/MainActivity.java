@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private spoken_numbers_main_fragment mainFragment;
     private spoken_numbers_ingame_fragment ingameFragment;
     private spoken_numbers_recall_fragment recallFragment;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String DELAYTIME = "delayTime";
+    public static final String INCTIME = "incTime";
+    public static final String ISFEMALE = "isFemale";
+    public static final String ISDECIMAL = "isDecimal";
 
     public void switchToInGameFragment(float timeDelay, float timeInc, boolean isFemale, boolean isDec){
         ingameFragment = new spoken_numbers_ingame_fragment(timeDelay, timeInc, isFemale, isDec);
@@ -52,5 +63,29 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(CONTENT_VIEW_ID, mainFragment);
         fragmentTransaction.commit();
     }
-
+    public void saveData(String delayTimeText, String incTimeText, boolean femaleChecked, boolean decimalChecked){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(DELAYTIME, delayTimeText);
+        editor.putString(INCTIME, incTimeText);
+        editor.putBoolean(ISFEMALE, femaleChecked);
+        editor.putBoolean(ISDECIMAL, decimalChecked);
+        editor.apply();
+    }
+    public String loadDataDelayTime(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return (String)sharedPreferences.getString(DELAYTIME, "1.00");
+    }
+    public String loadDataIncTime(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return (String)sharedPreferences.getString(INCTIME, "0.25");
+    }
+    public boolean loadDataFemaleChecked(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return (boolean)sharedPreferences.getBoolean(ISFEMALE, true);
+    }
+    public boolean loadDataDecimalChecked(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return (boolean)sharedPreferences.getBoolean(ISDECIMAL, true);
+    }
 }

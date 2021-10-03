@@ -22,6 +22,7 @@ It's a memory training app, which is intended for those interested in improving 
 #### Already Implemented, but scheduled for next release:
 
 - Choose between binary and decimal numbers to practice.
+- Save choices and preferences automatically.
 
 ### Running the Program
 

@@ -99,6 +99,9 @@ public class spoken_numbers_ingame_fragment extends Fragment {
         final Button incrementButton = getView().findViewById(R.id.time_increment);
         final TextView currentTimeTextView = getView().findViewById(R.id.current_time_control_text);
 
+        String currTimeText = timeDelay + "s";
+        currentTimeTextView.setText(currTimeText);
+
         String timeIncStr = "+" + timeInc;
         String timeDecStr = "-" + timeInc;
         incrementButton.setText(timeIncStr);

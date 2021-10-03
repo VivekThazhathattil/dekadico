@@ -87,7 +87,7 @@
                 android:layout_margin="20dp">
 
                 <RadioGroup
-                    android:id="@+id/radio_group"
+                    android:id="@+id/male_female_radio_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
