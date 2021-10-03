@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private spoken_numbers_ingame_fragment ingameFragment;
     private spoken_numbers_recall_fragment recallFragment;
 
-    public void switchToInGameFragment(float timeDelay, float timeInc, boolean isFemale){
-        ingameFragment = new spoken_numbers_ingame_fragment(timeDelay, timeInc, isFemale);
+    public void switchToInGameFragment(float timeDelay, float timeInc, boolean isFemale, boolean isDec){
+        ingameFragment = new spoken_numbers_ingame_fragment(timeDelay, timeInc, isFemale, isDec);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(mainFragment.getId(), ingameFragment);
         fragmentTransaction.commit();

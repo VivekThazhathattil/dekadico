@@ -24,16 +24,18 @@ public class spoken_numbers_ingame_fragment extends Fragment {
     private float timeDelay;
     private float timeInc;
     private boolean isFemale;
+    private boolean isDecimal;
     private ArrayList<Integer> rand_num_list = new ArrayList<Integer>();
     private Boolean appRunning;
     private long defaultMillisLeft;
     private long millisLeft;
     private CountDownTimer timer;
 
-    public spoken_numbers_ingame_fragment(float td, float ti, boolean isFemale) {
+    public spoken_numbers_ingame_fragment(float td, float ti, boolean isFemale, boolean isDecimal) {
         this.timeDelay = td;
         this.timeInc = ti;
         this.isFemale = isFemale;
+        this.isDecimal = isDecimal;
     }
 
     public CountDownTimer setupTimer(long timeLeft, float interval){
@@ -45,7 +47,13 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                     return;
                 }
                 Random r = new Random();
-                int rand_num = r.nextInt(10);
+                int rand_num;
+                if(isDecimal){
+                    rand_num = r.nextInt(10);
+                }
+                else{
+                    rand_num = r.nextInt(2);
+                }
                 rand_num_list.add(rand_num);
                 String female = "a";
                 if(!isFemale){

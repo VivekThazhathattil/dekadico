@@ -24,6 +24,8 @@ public class spoken_numbers_main_fragment extends Fragment {
     private EditText timeIncInput;
     private RadioButton femaleVoiceButton;
     private RadioButton maleVoiceButton;
+    private RadioButton decimalButton;
+    private RadioButton binaryButton;
     private float defaultTimeDelay;
     private float defaultTimeInc;
 
@@ -63,6 +65,9 @@ public class spoken_numbers_main_fragment extends Fragment {
         femaleVoiceButton = getView().findViewById(R.id.radio_button_female);
         maleVoiceButton = getView().findViewById(R.id.radio_button_male);
 
+        decimalButton = getView().findViewById(R.id.decimal_radio);
+        binaryButton = getView().findViewById(R.id.binary_radio);
+
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String timeDelayStr = timeDelayInput.getText().toString();
@@ -96,7 +101,16 @@ public class spoken_numbers_main_fragment extends Fragment {
                     isFemaleVoice = false;
                 }
 
-                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum, isFemaleVoice);
+                boolean isDecimal = true;
+                if(decimalButton.isChecked()){
+                    isDecimal = true;
+                }
+                else if(binaryButton.isChecked()){
+                    isDecimal = false;
+                }
+
+
+                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum, isFemaleVoice, isDecimal);
             }
         });
     }

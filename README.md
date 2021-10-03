@@ -17,7 +17,11 @@ It's a memory training app, which is intended for those interested in improving 
 - No overall time restrictions
 - Easy to use recall system
 - Increment/Decrement time delays on the fly, to adjust to your current memorizing speed
-- Add male voice. Now the user can choose between male/female voice.
+- User can now choose between male/female voice.
+
+#### Already Implemented, but scheduled for next release:
+
+- Choose between binary and decimal numbers to practice.
 
 ### Running the Program
 
@@ -29,7 +33,7 @@ For any problems relating to this app, please create a new 'issue' in this GitHu
 
 ### Contact
 
-If you have any questions, bug reports or other wishes, feel free to contact me on vivek.thazhathattil@gmail.com. I'll respond to you at the earliest.
+If you have any questions, bug reports, suggestions or other wishes, feel free to contact me on vivek.thazhathattil@gmail.com. I'll respond to you at the earliest.
 
 ### License
 

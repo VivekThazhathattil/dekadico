@@ -107,6 +107,33 @@
                 </RadioGroup>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/dec_or_bin_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/dec_or_bin_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/binary_radio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/binary_numbers" />
+
+                    <RadioButton
+                        android:id="@+id/decimal_radio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/decimal_numbers" />
+                </RadioGroup>
+            </LinearLayout>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
