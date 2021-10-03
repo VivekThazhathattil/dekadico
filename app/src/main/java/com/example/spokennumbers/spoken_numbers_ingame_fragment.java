@@ -23,15 +23,17 @@ import java.util.Timer;
 public class spoken_numbers_ingame_fragment extends Fragment {
     private float timeDelay;
     private float timeInc;
+    private boolean isFemale;
     private ArrayList<Integer> rand_num_list = new ArrayList<Integer>();
     private Boolean appRunning;
     private long defaultMillisLeft;
     private long millisLeft;
     private CountDownTimer timer;
 
-    public spoken_numbers_ingame_fragment(float td, float ti) {
+    public spoken_numbers_ingame_fragment(float td, float ti, boolean isFemale) {
         this.timeDelay = td;
         this.timeInc = ti;
+        this.isFemale = isFemale;
     }
 
     public CountDownTimer setupTimer(long timeLeft, float interval){
@@ -45,7 +47,11 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                 Random r = new Random();
                 int rand_num = r.nextInt(10);
                 rand_num_list.add(rand_num);
-                String sound_file_name = "a" + rand_num;
+                String female = "a";
+                if(!isFemale){
+                    female = "b";
+                }
+                String sound_file_name = female + rand_num;
                 int sound_id = getResources().getIdentifier(sound_file_name, "raw", getActivity().getPackageName());
                 MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), sound_id);
                 mp.setAudioStreamType(AudioManager.STREAM_MUSIC);

@@ -8,4 +8,6 @@
     <string name="time_control_text">TIME CONTROL:</string>
     <string name="recall_text">RECALL</string>
     <string name="curr_time_control_text">1.00 s</string>
+    <string name="male_text">Male voice</string>
+    <string name="female_text">Female voice</string>
 </resources>

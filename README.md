@@ -17,6 +17,7 @@ It's a memory training app, which is intended for those interested in improving 
 - No overall time restrictions
 - Easy to use recall system
 - Increment/Decrement time delays on the fly, to adjust to your current memorizing speed
+- Add male voice. Now the user can choose between male/female voice.
 
 ### Running the Program
 
@@ -33,3 +34,8 @@ If you have any questions, bug reports or other wishes, feel free to contact me 
 ### License
 
 The DekaDico repository is available under the MIT License.
+
+### ACKNOWLEDGEMENT
+
+* Male voice for spoken numbers: "Counting Numbers Normal Voice 0-12" by dersuperanton from [freesound.org](https://freesound.org/people/dersuperanton/sounds/434733/)
+* Female voice for spoken numbers: Amy Gedgaudas - by tim.kahn from [freesound.org](https://freesound.org/people/tim.kahn/packs/4372/)

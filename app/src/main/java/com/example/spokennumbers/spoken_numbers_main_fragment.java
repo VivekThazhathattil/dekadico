@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 
 
 /**
@@ -18,9 +19,11 @@ import android.widget.ImageButton;
  */
 public class spoken_numbers_main_fragment extends Fragment {
 
-    private static ImageButton startButton;
-    private static EditText timeDelayInput;
-    private static EditText timeIncInput;
+    private ImageButton startButton;
+    private EditText timeDelayInput;
+    private EditText timeIncInput;
+    private RadioButton femaleVoiceButton;
+    private RadioButton maleVoiceButton;
     private float defaultTimeDelay;
     private float defaultTimeInc;
 
@@ -57,6 +60,9 @@ public class spoken_numbers_main_fragment extends Fragment {
         timeDelayInput.setText(Float.toString(defaultTimeDelay));
         timeIncInput.setText(Float.toString(defaultTimeInc));
 
+        femaleVoiceButton = getView().findViewById(R.id.radio_button_female);
+        maleVoiceButton = getView().findViewById(R.id.radio_button_male);
+
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String timeDelayStr = timeDelayInput.getText().toString();
@@ -82,8 +88,15 @@ public class spoken_numbers_main_fragment extends Fragment {
                     if(timeIncNum <= 0.1)
                         timeIncNum = (float)defaultTimeInc;
                 }
+                boolean isFemaleVoice = true;
+                if(femaleVoiceButton.isChecked()){
+                    isFemaleVoice = true;
+                }
+                else if(maleVoiceButton.isChecked()){
+                    isFemaleVoice = false;
+                }
 
-                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum);
+                ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum, isFemaleVoice);
             }
         });
     }
