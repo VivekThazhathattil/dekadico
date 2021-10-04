@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".spoken_numbers_recall_fragment">
+    tools:context=".spoken_numbers_recall_fragment"
+    android:background="@drawable/ic_bg_basic"
+    android:backgroundTint="#957DAD">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

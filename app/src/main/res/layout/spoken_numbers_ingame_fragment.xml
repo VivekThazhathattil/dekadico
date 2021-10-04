@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_bg_basic"
+    android:backgroundTint="#D291BC"
     tools:context=".spoken_numbers_ingame_fragment">
 
     <LinearLayout

@@ -18,11 +18,9 @@ It's a memory training app, which is intended for those interested in improving 
 - Easy to use recall system
 - Increment/Decrement time delays on the fly, to adjust to your current memorizing speed
 - User can now choose between male/female voice.
-
-#### Already Implemented, but scheduled for next release:
-
 - Choose between binary and decimal numbers to practice.
 - Save choices and preferences automatically.
+- improve UI
 
 ### Running the Program
 
@@ -35,6 +33,14 @@ For any problems relating to this app, please create a new 'issue' in this GitHu
 ### Contact
 
 If you have any questions, bug reports, suggestions or other wishes, feel free to contact me on vivek.thazhathattil@gmail.com. I'll respond to you at the earliest.
+
+### Get Started with Memorization!
+
+* If you are a newbie into the world of mnemonics and memorization, this is probably the best resouce to get you going : [ArtOfMemory](https://artofmemory.com/wiki/Main_Page/)
+
+* Once you have familiarized with the basic memorization techniques, you can move on to more interesting methods used by memory athletes like Person-Action-Object, Major system, Dominic system, Ben's system etc. You can pick one as the weapon of your choice or create one on your own, and use apps like this to train and improve your skills.
+
+* Consistency is key to improvement. Practicing daily for as little as 5-10 minutes will help boost your skill level more than an hour of practice once every week.
 
 ### License
 

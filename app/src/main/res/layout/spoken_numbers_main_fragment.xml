@@ -8,7 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_bg_basic"
+        android:backgroundTint="#64E987">
 
         <LinearLayout
             android:id="@+id/main_menu_container"
@@ -26,6 +28,7 @@
                 android:id="@+id/start_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="Begin training"
                 android:minWidth="50dp"
                 android:src="@android:drawable/ic_media_play" />
 
@@ -41,6 +44,7 @@
                     android:layout_width="279dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="The amount of time interval between speaking two numbers"
                     android:text="Enter time delay:"
                     android:textSize="20sp" />
 
@@ -49,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="The amount of time the user wishes to manually increment or decrement the original time interval"
                     android:ems="10"
                     android:inputType="numberDecimal"
                     android:textSize="20sp" />
