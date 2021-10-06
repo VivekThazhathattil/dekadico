@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".spoken_numbers_recall_fragment"
     android:background="@drawable/ic_bg_basic"
-    android:backgroundTint="#957DAD">
+    android:backgroundTint="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,28 +26,44 @@
                 android:id="@+id/one_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:src="@android:drawable/ic_media_next" />
 
             <ImageButton
                 android:id="@+id/all_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:src="@android:drawable/ic_media_ff" />
 
             <ImageButton
                 android:id="@+id/no_soln_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:src="@android:drawable/ic_media_rew" />
 
             <ImageButton
                 android:id="@+id/exit_to_menu_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:src="@android:drawable/ic_menu_revert" />
         </LinearLayout>
 

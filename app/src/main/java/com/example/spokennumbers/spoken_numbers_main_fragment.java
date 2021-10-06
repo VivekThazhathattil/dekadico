@@ -25,10 +25,9 @@ public class spoken_numbers_main_fragment extends Fragment {
     private EditText timeIncInput;
     private RadioButton femaleVoiceButton;
     private RadioButton maleVoiceButton;
+    private RadioButton syntheticButton;
     private RadioButton decimalButton;
     private RadioButton binaryButton;
-    private RadioGroup maleFemaleRadioGroup;
-    private RadioGroup decimalBinaryRadioGroup;
     private String defaultTimeDelay;
     private String defaultTimeInc;
 
@@ -60,8 +59,6 @@ public class spoken_numbers_main_fragment extends Fragment {
         startButton = getView().findViewById(R.id.start_button);
         timeDelayInput = getView().findViewById(R.id.time_delay_input);
         timeIncInput = getView().findViewById(R.id.time_inc_num);
-        maleFemaleRadioGroup = getView().findViewById(R.id.male_female_radio_group);
-        decimalBinaryRadioGroup = getView().findViewById(R.id.dec_or_bin_radio_group);
 
         defaultTimeDelay = ((MainActivity)getActivity()).loadDataDelayTime();
         defaultTimeInc = ((MainActivity)getActivity()).loadDataIncTime();
@@ -70,6 +67,9 @@ public class spoken_numbers_main_fragment extends Fragment {
 
         femaleVoiceButton = getView().findViewById(R.id.radio_button_female);
         maleVoiceButton = getView().findViewById(R.id.radio_button_male);
+        syntheticButton = getView().findViewById(R.id.radio_button_synthetic_male);
+        syntheticButton.setEnabled(false);
+
         femaleVoiceButton.setChecked(((MainActivity)getActivity()).loadDataFemaleChecked());
         maleVoiceButton.setChecked(!((MainActivity)getActivity()).loadDataFemaleChecked());
 

@@ -26,10 +26,13 @@
 
             <ImageButton
                 android:id="@+id/start_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button_with_states"
                 android:contentDescription="Begin training"
-                android:minWidth="50dp"
+                android:minWidth="100dp"
+                android:minHeight="100dp"
                 android:src="@android:drawable/ic_media_play" />
 
             <LinearLayout
@@ -69,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/time_inc_text"
-                    android:layout_width="209dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Increment:"
@@ -81,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -108,6 +112,12 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="@string/female_text" />
+
+                    <RadioButton
+                        android:id="@+id/radio_button_synthetic_male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/synthetic_text" />
 
                 </RadioGroup>
             </LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bg_basic"
-    android:backgroundTint="#D291BC"
+    android:backgroundTint="@color/colorPrimaryDark"
     tools:context=".spoken_numbers_ingame_fragment">
 
     <LinearLayout
@@ -16,14 +16,24 @@
 
         <ImageButton
             android:id="@+id/pause_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:minWidth="75dp"
+            android:minHeight="75dp"
+            android:background="@drawable/round_button_with_states"
             android:src="@android:drawable/ic_media_pause" />
 
         <Button
             android:id="@+id/recall_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:minWidth="75dp"
+            android:minHeight="75dp"
+            android:background="@drawable/round_button_with_states"
             android:text="@string/recall_text" />
 
         <TextView
@@ -36,6 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="30dp"
             android:orientation="horizontal">
 
             <Button
@@ -43,6 +54,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:text="@string/time_dec_text" />
 
             <TextView
@@ -59,6 +73,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/round_button_with_states"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
                 android:text="@string/time_inc_text" />
         </LinearLayout>
     </LinearLayout>
