@@ -1,5 +1,9 @@
 # DekaDico
 
+<p>
+<img src="fastlane/metadata/android/en-US/images/icon.png" height=150px />
+</p>
+
 This repository contains the source code for the DekaDico Android app.
 
 ### What's DekaDico?
@@ -54,7 +58,7 @@ The DekaDico repository is available under the MIT License.
 ### Screenshots
 
 <p>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2-memorize.png" width=200px title="Xournal++ Screenshot on Linux"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1-intro.png" width=200px title="Xournal++ Screenshot on Linux"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3-recall.png" width=200px title="Xournal++ Screenshot on Linux"/>
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2-memorize.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1-intro.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3-recall.png" width=200px />
 </p>
