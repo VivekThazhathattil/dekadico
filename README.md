@@ -50,3 +50,11 @@ The DekaDico repository is available under the MIT License.
 
 * Male voice for spoken numbers: "Counting Numbers Normal Voice 0-12" by dersuperanton from [freesound.org](https://freesound.org/people/dersuperanton/sounds/434733/)
 * Female voice for spoken numbers: Amy Gedgaudas - by tim.kahn from [freesound.org](https://freesound.org/people/tim.kahn/packs/4372/)
+
+### Screenshots
+
+<p>
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2-memorize.png" width=200px title="Xournal++ Screenshot on Linux"/>
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1-intro.png" width=200px title="Xournal++ Screenshot on Linux"/>
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3-recall.png" width=200px title="Xournal++ Screenshot on Linux"/>
+</p>
