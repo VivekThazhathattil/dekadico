@@ -30,18 +30,24 @@ public class MainActivity extends AppCompatActivity {
     public void switchToInGameFragment(float timeDelay, float timeInc, boolean isFemale, boolean isDec){
         ingameFragment = new spoken_numbers_ingame_fragment(timeDelay, timeInc, isFemale, isDec);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(mainFragment.getId(), ingameFragment);
         fragmentTransaction.commit();
     }
     public void switchToRecallFragment(ArrayList<Integer> al){
         recallFragment = new spoken_numbers_recall_fragment(al);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(ingameFragment.getId(), recallFragment);
         fragmentTransaction.commit();
     }
     public void switchToMainFragment(){
         mainFragment = new spoken_numbers_main_fragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(recallFragment.getId(), mainFragment);
         fragmentTransaction.commit();
     }

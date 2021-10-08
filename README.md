@@ -26,6 +26,10 @@ It's a memory training app, which is intended for those interested in improving 
 - Save choices and preferences automatically.
 - improved UI
 
+#### Implemented for next release
+
+- transition animation between windows
+
 ### Running the Program
 
 This program is only available for android devices. It is readily avaiable for installation from [FDroid](https://f-droid.org/packages/com.example.spokennumbers/) Repository or from Github [releases](https://github.com/VivekThazhathattil/dekadico/releases).

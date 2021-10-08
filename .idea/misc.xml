@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/icon_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/spoken_numbers_ingame_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/spoken_numbers_main_fragment.xml" value="0.175" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/icon.xml" value="0.1" />
       </map>
     </option>

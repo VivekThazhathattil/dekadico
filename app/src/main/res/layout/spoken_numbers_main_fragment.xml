@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="The amount of time interval between speaking two numbers"
-                    android:text="Enter time delay:"
+                    android:text="@string/time_interval"
                     android:textSize="20sp" />
 
                 <EditText
