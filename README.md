@@ -25,10 +25,9 @@ It's a memory training app, which is intended for those interested in improving 
 - Choose between binary and decimal numbers to practice.
 - Save choices and preferences automatically.
 - improved UI
-
-#### Implemented for next release
-
 - transition animation between windows
+- Evaluation mode
+- Store and display Highscore
 
 ### Running the Program
 
