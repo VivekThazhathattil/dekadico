@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -16,16 +17,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
 
 
 public class spoken_numbers_ingame_fragment extends Fragment {
     private float timeDelay;
-    private float timeInc;
-    private boolean isFemale;
-    private boolean isDecimal;
-    private ArrayList<Integer> rand_num_list = new ArrayList<Integer>();
+    private final float timeInc;
+    private final boolean isFemale;
+    private final boolean isDecimal;
+    private final ArrayList<Integer> rand_num_list = new ArrayList<>();
     private Boolean appRunning;
     private long defaultMillisLeft;
     private long millisLeft;
@@ -39,7 +41,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
     }
 
     public CountDownTimer setupTimer(long timeLeft, float interval){
-        CountDownTimer timer = new CountDownTimer(timeLeft,(int)(interval*1000) ) {
+        return new CountDownTimer(timeLeft,(int)(interval*1000) ) {
             @Override
             public void onTick(long millisUntilFinished) {
                 millisLeft = millisUntilFinished;
@@ -60,7 +62,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                     female = "b";
                 }
                 String sound_file_name = female + rand_num;
-                int sound_id = getResources().getIdentifier(sound_file_name, "raw", getActivity().getPackageName());
+                int sound_id = getResources().getIdentifier(sound_file_name, "raw", Objects.requireNonNull(getActivity()).getPackageName());
                 MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), sound_id);
                 mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mp.start();
@@ -75,14 +77,11 @@ public class spoken_numbers_ingame_fragment extends Fragment {
             public void onFinish() {
             }
         };
-        return timer;
     }
 
         @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -92,8 +91,8 @@ public class spoken_numbers_ingame_fragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
-        final ImageButton pauseButton = getView().findViewById(R.id.pause_button);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        final ImageButton pauseButton = Objects.requireNonNull(getView()).findViewById(R.id.pause_button);
         final Button recallButton = getView().findViewById(R.id.recall_button);
         final Button decrementButton = getView().findViewById(R.id.time_decrement);
         final Button incrementButton = getView().findViewById(R.id.time_increment);
@@ -115,51 +114,46 @@ public class spoken_numbers_ingame_fragment extends Fragment {
         timer = setupTimer(millisLeft, timeDelay);
         timer.start();
 
-        incrementButton.setOnClickListener(new View.OnClickListener(){
-           public void onClick(View v){
-                timeDelay += timeInc;
-               String currTimeText = timeDelay + "s";
-               currentTimeTextView.setText(currTimeText);
-               timer.cancel();
-                timer = setupTimer(defaultMillisLeft, timeDelay);
-                timer.start();
+        incrementButton.setOnClickListener(v -> {
+             timeDelay += timeInc;
+            String currTimeText12 = timeDelay + "s";
+            currentTimeTextView.setText(currTimeText12);
+            timer.cancel();
+             timer = setupTimer(defaultMillisLeft, timeDelay);
+             timer.start();
+         });
+
+        decrementButton.setOnClickListener(v -> {
+            if(timeDelay - timeInc < 0.1){
+               return;
             }
+            timeDelay -= timeInc;
+            String currTimeText1 = timeDelay + "s";
+            currentTimeTextView.setText(currTimeText1);
+            timer.cancel();
+            timer = setupTimer(defaultMillisLeft, timeDelay);
+            timer.start();
         });
 
-        decrementButton.setOnClickListener(new View.OnClickListener(){
-           public void onClick(View v){
-               if(timeDelay - timeInc < 0.1){
-                  return;
-               }
-               timeDelay -= timeInc;
-               String currTimeText = timeDelay + "s";
-               currentTimeTextView.setText(currTimeText);
-               timer.cancel();
-               timer = setupTimer(defaultMillisLeft, timeDelay);
-               timer.start();
-           }
+        recallButton.setOnClickListener(v -> {
+            timer.cancel();
+            if(MainActivity.evaluationMode)
+                ((MainActivity) Objects.requireNonNull(getActivity())).switchToEvalFragment(rand_num_list);
+            else
+            ((MainActivity) Objects.requireNonNull(getActivity())).switchToRecallFragment(rand_num_list);
         });
 
-        recallButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        pauseButton.setOnClickListener(v -> {
+            if(appRunning) {
                 timer.cancel();
-                ((MainActivity)getActivity()).switchToRecallFragment(rand_num_list);
+                pauseButton.setImageResource(android.R.drawable.ic_media_play);
+                appRunning = false;
             }
-        });
-
-        pauseButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if(appRunning) {
-                    timer.cancel();
-                    pauseButton.setImageResource(android.R.drawable.ic_media_play);
-                    appRunning = false;
-                }
-                else {
-                    timer = setupTimer(millisLeft, timeDelay);
-                    timer.start();
-                    pauseButton.setImageResource(android.R.drawable.ic_media_pause);
-                    appRunning = true;
-                }
+            else {
+                timer = setupTimer(millisLeft, timeDelay);
+                timer.start();
+                pauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                appRunning = true;
             }
         });
     }

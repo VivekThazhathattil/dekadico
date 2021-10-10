@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class spoken_numbers_recall_fragment extends Fragment {
     private ArrayList<Integer> num_list;
@@ -70,7 +71,7 @@ public class spoken_numbers_recall_fragment extends Fragment {
         });
         returnButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                ((MainActivity)getActivity()).switchToMainFragment();
+                ((MainActivity) Objects.requireNonNull(getActivity())).switchToMainFragment("recall");
             }
         });
     }

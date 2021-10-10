@@ -14,4 +14,13 @@
     <string name="synthetic_text">Synthetic (experimental) </string>
     <string name="decimal_numbers">Decimal Numbers</string>
     <string name="binary_numbers">Binary Numbers</string>
+    <string name="evaluation_mode">Evaluation mode</string>
+    <string name="check">Check</string>
+    <string name="textview">TextView</string>
+    <string name="type_answer_here">Type answer here...</string>
+    <string name="restart_text">Restart</string>
+    <string name="blank">-</string>
+    <string name="high_score">High Score: -</string>
+    <string name="begin_training">Begin training</string>
+    <string name="timedelay_desc">The amount of time interval between speaking two numbers</string>
 </resources>

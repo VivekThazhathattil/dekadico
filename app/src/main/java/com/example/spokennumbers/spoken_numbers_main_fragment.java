@@ -11,13 +11,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.TextView;
 
+import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link spoken_numbers_main_fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class spoken_numbers_main_fragment extends Fragment {
 
     private ImageButton startButton;
@@ -60,7 +58,7 @@ public class spoken_numbers_main_fragment extends Fragment {
         timeDelayInput = getView().findViewById(R.id.time_delay_input);
         timeIncInput = getView().findViewById(R.id.time_inc_num);
 
-        defaultTimeDelay = ((MainActivity)getActivity()).loadDataDelayTime();
+        defaultTimeDelay = ((MainActivity) Objects.requireNonNull(getActivity())).loadDataDelayTime();
         defaultTimeInc = ((MainActivity)getActivity()).loadDataIncTime();
         timeDelayInput.setText(defaultTimeDelay);
         timeIncInput.setText(defaultTimeInc);
@@ -78,6 +76,15 @@ public class spoken_numbers_main_fragment extends Fragment {
         decimalButton.setChecked(((MainActivity)getActivity()).loadDataDecimalChecked());
         binaryButton.setChecked(!((MainActivity)getActivity()).loadDataDecimalChecked());
 
+        Switch evalSwitch = Objects.requireNonNull(getView()).findViewById(R.id.eval_mode_switch);
+        boolean evalState = ((MainActivity)getActivity()).loadEvalModeChecked();
+        evalSwitch.setChecked(evalState);
+
+        TextView highScoreText = getView().findViewById(R.id.high_score_view);
+        int highScoreInt = ((MainActivity) getActivity()).loadHighScore();
+        String highScoreStr = "High Score:  " + highScoreInt;
+        highScoreText.setText(highScoreStr);
+
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String timeDelayStr = timeDelayInput.getText().toString();
@@ -90,7 +97,7 @@ public class spoken_numbers_main_fragment extends Fragment {
                     timeDelayNum = Float.parseFloat(defaultTimeDelay);
                 }
                 else{
-                    timeDelayNum = Float.valueOf(timeDelayStr);
+                    timeDelayNum = Float.parseFloat(timeDelayStr);
                     if(timeDelayNum <= 0.1)
                         timeDelayNum = Float.parseFloat(defaultTimeDelay);
                 }
@@ -99,11 +106,11 @@ public class spoken_numbers_main_fragment extends Fragment {
                     timeIncNum = Float.parseFloat(defaultTimeInc);
                 }
                 else{
-                    timeIncNum = Float.valueOf(timeIncStr);
+                    timeIncNum = Float.parseFloat(timeIncStr);
                     if(timeIncNum <= 0.1)
                         timeIncNum = Float.parseFloat(defaultTimeInc);
                 }
-                boolean isFemaleVoice = ((MainActivity)getActivity()).loadDataFemaleChecked();
+                boolean isFemaleVoice = ((MainActivity) Objects.requireNonNull(getActivity())).loadDataFemaleChecked();
                 if(femaleVoiceButton.isChecked()){
                     isFemaleVoice = true;
                 }
@@ -119,8 +126,19 @@ public class spoken_numbers_main_fragment extends Fragment {
                     isDecimal = false;
                 }
 
+                boolean evaluationMode = ((MainActivity)getActivity()).loadEvalModeChecked();
+
+                if(decimalButton.isChecked()){
+                    isDecimal = true;
+                }
+                else if(binaryButton.isChecked()){
+                    isDecimal = false;
+                }
+
+                MainActivity.evaluationMode = evalSwitch.isChecked();
+
                 ((MainActivity)getActivity()).saveData(Float.toString(timeDelayNum),
-                        Float.toString(timeIncNum), isFemaleVoice, isDecimal);
+                        Float.toString(timeIncNum), isFemaleVoice, isDecimal, MainActivity.evaluationMode);
                 ((MainActivity)getActivity()).switchToInGameFragment(timeDelayNum, timeIncNum, isFemaleVoice, isDecimal);
             }
         });

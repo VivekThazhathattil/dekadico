@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
+            android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,16 +31,37 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/round_button_with_states"
-                android:contentDescription="Begin training"
+                android:contentDescription="@string/begin_training"
                 android:minWidth="100dp"
                 android:minHeight="100dp"
                 android:src="@android:drawable/ic_media_play" />
+
+            <TextView
+                android:id="@+id/high_score_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_edittext"
+                android:minWidth="50dp"
+                android:minHeight="20dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorPrimaryDark"
+            android:text="@string/high_score" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/time_delay_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -47,7 +69,7 @@
                     android:layout_width="279dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:contentDescription="The amount of time interval between speaking two numbers"
+                    android:contentDescription="@string/timedelay_desc"
                     android:text="@string/time_interval"
                     android:textSize="20sp" />
 
@@ -67,7 +89,8 @@
                 android:id="@+id/time_inc_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -93,7 +116,11 @@
                 android:id="@+id/voice_select_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp">
+                android:background="@drawable/border_fancy"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <RadioGroup
                     android:id="@+id/male_female_radio_group"
@@ -126,7 +153,11 @@
                 android:id="@+id/dec_or_bin_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:padding="5dp"
+                android:background="@drawable/border_fancy"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <RadioGroup
@@ -148,6 +179,15 @@
                         android:text="@string/decimal_numbers" />
                 </RadioGroup>
             </LinearLayout>
+
+            <Switch
+                android:id="@+id/eval_mode_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:checked="true"
+                android:textSize="20sp"
+                android:text="@string/evaluation_mode" />
 
         </LinearLayout>
 
