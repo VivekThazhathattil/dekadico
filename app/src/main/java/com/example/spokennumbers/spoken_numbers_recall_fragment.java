@@ -2,6 +2,7 @@ package com.example.spokennumbers;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ public class spoken_numbers_recall_fragment extends Fragment {
     private int counter;
     private TextView answerView;
     private String recallString;
+    public static final String TAG = "RECALL";
+
     public spoken_numbers_recall_fragment(ArrayList<Integer> al) {
         num_list = al;
     }
@@ -26,8 +29,6 @@ public class spoken_numbers_recall_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -36,8 +37,8 @@ public class spoken_numbers_recall_fragment extends Fragment {
         return inflater.inflate(R.layout.spoken_numbers_recall_fragment, container, false);
     }
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
-        final ImageButton oneSolnButton = getView().findViewById(R.id.one_soln_button);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        final ImageButton oneSolnButton = Objects.requireNonNull(getView()).findViewById(R.id.one_soln_button);
         final ImageButton allSolnButton = getView().findViewById(R.id.all_soln_button);
         final ImageButton noSolnButton = getView().findViewById(R.id.no_soln_button);
         final ImageButton returnButton = getView().findViewById(R.id.exit_to_menu_button);
