@@ -32,6 +32,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
     private long defaultMillisLeft;
     private long millisLeft;
     private CountDownTimer timer;
+    public static final String TAG = "INGAME";
 
     public spoken_numbers_ingame_fragment(float td, float ti, boolean isFemale, boolean isDecimal) {
         this.timeDelay = td;
@@ -156,5 +157,10 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                 appRunning = true;
             }
         });
+    }
+
+    public void stopCountDownTimer() {
+        if(timer != null)
+            timer.cancel();
     }
 }

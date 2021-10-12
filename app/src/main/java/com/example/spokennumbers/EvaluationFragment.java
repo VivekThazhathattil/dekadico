@@ -21,6 +21,7 @@ import java.util.Objects;
 
 public class EvaluationFragment extends Fragment {
     private ArrayList<Integer> solutionList;
+    public static final String TAG = "EVAL";
 
     public EvaluationFragment(ArrayList<Integer> solutionList) {
         this.solutionList = solutionList;

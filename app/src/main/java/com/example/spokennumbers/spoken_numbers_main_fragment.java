@@ -28,6 +28,7 @@ public class spoken_numbers_main_fragment extends Fragment {
     private RadioButton binaryButton;
     private String defaultTimeDelay;
     private String defaultTimeInc;
+    public static final String TAG = "MAIN";
 
     public spoken_numbers_main_fragment() {
         // Required empty public constructor

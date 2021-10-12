@@ -35,17 +35,15 @@ public class MainActivity extends AppCompatActivity {
         ingameFragment = new spoken_numbers_ingame_fragment(timeDelay, timeInc, isFemale, isDec);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
-        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(mainFragment.getId(), ingameFragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
     public void switchToRecallFragment(ArrayList<Integer> al){
         recallFragment = new spoken_numbers_recall_fragment(al);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
-        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(ingameFragment.getId(), recallFragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     public void switchToEvalFragment(ArrayList<Integer> al){
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
         //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(ingameFragment.getId(), evaluationFragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     public void switchToMainFragment(String mode){
@@ -95,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(CONTENT_VIEW_ID, mainFragment);
         fragmentTransaction.commit();
     }
+
     public void saveData(String delayTimeText, String incTimeText, boolean femaleChecked, boolean decimalChecked, boolean isEvalMode){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -139,5 +138,12 @@ public class MainActivity extends AppCompatActivity {
     public int loadHighScore(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         return (int)sharedPreferences.getInt(HIGHSCORE, 0);
+    }
+    @Override
+    public void onBackPressed() {
+        if (ingameFragment != null) {
+            ingameFragment.stopCountDownTimer();
+        }
+        super.onBackPressed();
     }
 }
