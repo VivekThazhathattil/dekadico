@@ -23,5 +23,4 @@
     <string name="high_score">High Score: -</string>
     <string name="begin_training">Begin training</string>
     <string name="timedelay_desc">The amount of time interval between speaking two numbers</string>
-    <string name="night_mode">Night mode</string>
 </resources>

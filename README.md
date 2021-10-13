@@ -28,6 +28,7 @@ It's a memory training app, which is intended for those interested in improving 
 - transition animation between windows
 - Evaluation mode
 - Store and display Highscore
+- Light/Dark mode support
 
 ### Running the Program
 

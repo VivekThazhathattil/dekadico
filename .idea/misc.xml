@@ -9,9 +9,10 @@
         <entry key="app/src/main/res/drawable/icon_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_edittext.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout-v21/spoken_numbers_eval_fragment.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.175" />
         <entry key="app/src/main/res/layout/spoken_numbers_eval_fragment.xml" value="0.175" />
         <entry key="app/src/main/res/layout/spoken_numbers_ingame_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/spoken_numbers_main_fragment.xml" value="0.30297565374211" />
+        <entry key="app/src/main/res/layout/spoken_numbers_main_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/icon.xml" value="0.1" />
       </map>
     </option>

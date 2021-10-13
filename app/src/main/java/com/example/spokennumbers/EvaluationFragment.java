@@ -48,7 +48,7 @@ public class EvaluationFragment extends Fragment {
             }
 
             int numCorrect = checkCorrectness(usersSolutionText);
-            ((MainActivity) Objects.requireNonNull(getActivity())).saveHighScore(numCorrect);
+            MainActivity.prefConfig.saveHighScore(numCorrect);
             updateStatsView(statsView, numCorrect);
             usersSolutionText.setFocusable(false);
             usersSolutionText.setFocusableInTouchMode(false);

@@ -1,6 +1,7 @@
 package com.example.spokennumbers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private spoken_numbers_ingame_fragment ingameFragment;
     private spoken_numbers_recall_fragment recallFragment;
     private EvaluationFragment evaluationFragment;
+    public static PrefConfig prefConfig;
     public static boolean evaluationMode = true;
 
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
+        prefConfig = new PrefConfig(getApplicationContext());
+
         mainFragment = new spoken_numbers_main_fragment();
         mainFragment.setArguments(getIntent().getExtras());
         fragmentManager = getSupportFragmentManager();
@@ -94,51 +98,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void saveData(String delayTimeText, String incTimeText, boolean femaleChecked, boolean decimalChecked, boolean isEvalMode){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(DELAYTIME, delayTimeText);
-        editor.putString(INCTIME, incTimeText);
-        editor.putBoolean(ISFEMALE, femaleChecked);
-        editor.putBoolean(ISDECIMAL, decimalChecked);
-        editor.putBoolean(EVALMODE, isEvalMode);
-        editor.apply();
-    }
-    public String loadDataDelayTime(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (String)sharedPreferences.getString(DELAYTIME, "1.00");
-    }
-    public String loadDataIncTime(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (String)sharedPreferences.getString(INCTIME, "0.25");
-    }
-    public boolean loadDataFemaleChecked(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (boolean) sharedPreferences.getBoolean(ISFEMALE, true);
-    }
-    public boolean loadDataDecimalChecked(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (boolean)sharedPreferences.getBoolean(ISDECIMAL, true);
-    }
-    public boolean loadEvalModeChecked(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (boolean)sharedPreferences.getBoolean(EVALMODE, true);
-    }
-
-    public void saveHighScore(int newScore){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        int oldHighScore = loadHighScore();
-        if(newScore > oldHighScore){
-            editor.putInt(HIGHSCORE, newScore);
-            editor.apply();
-        }
-    }
-
-    public int loadHighScore(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return (int)sharedPreferences.getInt(HIGHSCORE, 0);
-    }
     @Override
     public void onBackPressed() {
         if (ingameFragment != null) {
