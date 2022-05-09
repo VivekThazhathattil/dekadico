@@ -47,7 +47,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#0050FF"
             android:text="@string/high_score" />
 
             <LinearLayout
