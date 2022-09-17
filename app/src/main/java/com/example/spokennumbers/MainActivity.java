@@ -1,7 +1,12 @@
 package com.example.spokennumbers;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
+import androidx.activity.OnBackPressedDispatcherOwner;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -61,19 +66,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /* Return from the game module fragment to the games menu fragment */
-    public void switchToGamesMenuFragment(String currentFragmentName){
+    public void switchToGamesMenuFragment(){
         gamesMenuFragment = new GamesMenu();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
-        switch(currentFragmentName){
-            case "SpokenNumbers":
-                fragmentTransaction.replace(mainFragment.getId(), gamesMenuFragment);
+
+        /* lord, please forgive me for the sin I'm about to commit */
+        int numberOfFragments = getSupportFragmentManager().getFragments().size();
+        for (Fragment fragment: getSupportFragmentManager().getFragments()){
+            if(numberOfFragments == 1){
+                fragmentTransaction.replace(fragment.getId(), gamesMenuFragment);
                 break;
-            case "FlashAnzan":
-                fragmentTransaction.replace(flashAnzanFragment.getId(), gamesMenuFragment);
-                break;
+            }
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+            --numberOfFragments;
         }
-        fragmentTransaction.replace(flashAnzanFragment.getId(), gamesMenuFragment);
         fragmentTransaction.addToBackStack(null).commit();
     }
 
@@ -148,6 +155,14 @@ public class MainActivity extends AppCompatActivity {
         //fragmentTransaction.add(CONTENT_VIEW_ID, mainFragment);
         fragmentTransaction.add(CONTENT_VIEW_ID, gamesMenuFragment);
         fragmentTransaction.commit();
+
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                switchToGamesMenuFragment();
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 
     @Override

@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="default: 3"
+                    android:hint="Default: 3"
                     android:inputType="number"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="default: 5"
+                    android:hint="Default: 5"
                     android:inputType="number"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="default: 1000"
+                    android:hint="Default: 1000"
                     android:inputType="number"
                     android:textColor="#000"
                     android:textSize="20sp" />

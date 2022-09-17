@@ -1,10 +1,13 @@
 package com.example.spokennumbers;
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +65,11 @@ public class GamesMenu extends Fragment {
         return inflater.inflate(R.layout.fragment_games_menu, container, false);
     }
 
+    private static void playSound(Context context, int id){
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, id);
+        mediaPlayer.start();
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         spoken_numbers_game_button = getView().findViewById(R.id.spoken_numbers_game_button);
@@ -73,6 +81,7 @@ public class GamesMenu extends Fragment {
         spoken_numbers_game_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                playSound(getContext(), R.raw.game_enter);
                 ((MainActivity) Objects.requireNonNull(getActivity())).switchToSpokenNumbersGameFragment();
             }
         });
@@ -84,6 +93,7 @@ public class GamesMenu extends Fragment {
         flash_anzan_game_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                playSound(getContext(), R.raw.game_enter);
                 ((MainActivity) Objects.requireNonNull(getActivity())).switchToFlashAnzanGameFragment();
             }
         });

@@ -1,6 +1,8 @@
 package com.example.spokennumbers;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,21 +33,21 @@ import java.util.TimerTask;
  */
 public class FlashAnzan extends Fragment {
 
-    private static Integer flash_timeout = 200;
-    private static Integer num_timeout = 200;
-    private static Integer num_digits = 3;
-    private static Integer num_rows = 5;
+    private static Integer flash_timeout;
+    private static Integer num_timeout;
+    private static Integer num_digits;
+    private static Integer num_rows;
 
     private static long final_answer = 0;
 
-    private static final Integer default_flash_timeout = 200;
-    private static final Integer default_num_timeout = 200;
+    private static final Integer default_flash_timeout = 1000;
+    private static final Integer default_num_timeout = 1000;
     private static final Integer default_num_rows = 5;
     private static final Integer default_num_digits = 3;
 
-    private static boolean continuous_mode = false;
-    private static boolean speech_synthesis = false;
-    private static boolean subtractions_mode = false;
+    private static boolean continuous_mode;
+    private static boolean speech_synthesis;
+    private static boolean subtractions_mode;
     private static boolean is_running = false;
     private static Timer timer;
 
@@ -86,8 +88,16 @@ public class FlashAnzan extends Fragment {
     }
 
     private void adjustNumDigits(){
-        if(num_digits <= 0)  num_digits = 1;
-        else if(num_digits > 17) num_digits = 17;
+        num_digits = (num_digits > 5)
+                ? 5
+                : ((num_digits <= 0)
+                ? 1
+                : num_digits);
+    }
+
+    private static void playSound(Context context, int id){
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, id);
+        mediaPlayer.start();
     }
 
     private ArrayList<Long> generateRandomNumbers(){
@@ -135,17 +145,21 @@ public class FlashAnzan extends Fragment {
                     dots_counter[0]++;
                 }
                 else{
+                    playSound(getContext(), R.raw.number_view);
                     num_display_textview.setText(elements_to_display.get(element_counter[0]).toString());
                     element_counter[0]++;
                     if(element_counter[0] >= elements_to_display.size()){
                         Activity myActivity = getActivity();
-                        myActivity.runOnUiThread(new Runnable() {
-                                                     @Override
-                                                     public void run() {
-                                                         show_answer_button.setVisibility(View.VISIBLE);
+                        if(myActivity != null){
+                            myActivity.runOnUiThread(new Runnable() {
+                                                         @Override
+                                                         public void run() {
+                                                             if(show_answer_button != null)
+                                                                 show_answer_button.setVisibility(View.VISIBLE);
+                                                         }
                                                      }
-                                                 }
-                        );
+                            );
+                        }
                         timer.cancel();
                     }
                 }
@@ -196,8 +210,30 @@ public class FlashAnzan extends Fragment {
         subtractions_mode = update_params_switch_helper(subtractions_switch);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    private void loadPreviousDataFromConfigFile(){
+        flash_timeout = Integer.parseInt(MainActivity.prefConfig.loadFlashAnzanDataString(PrefConfig.FLASH_ANZAN_NUM_FLASH));
+        num_timeout = Integer.parseInt(MainActivity.prefConfig.loadFlashAnzanDataString(PrefConfig.FLASH_ANZAN_NUM_TIMEOUT));
+        num_digits = Integer.parseInt(MainActivity.prefConfig.loadFlashAnzanDataString(PrefConfig.FLASH_ANZAN_NUM_DIGITS));
+        num_rows = Integer.parseInt(MainActivity.prefConfig.loadFlashAnzanDataString(PrefConfig.FLASH_ANZAN_NUM_ROWS));
+
+        //Log.i("TAG_VIVEK", "Tag:flash_anzan__ " + flash_timeout.toString() + " " + num_timeout.toString() + "!");
+
+        continuous_mode = MainActivity.prefConfig.loadFlashAnzanDataBoolean(PrefConfig.FLASH_ANZAN_CONTINUOUS_MODE);
+        speech_synthesis = MainActivity.prefConfig.loadFlashAnzanDataBoolean(PrefConfig.FLASH_ANZAN_SPEECH_SYNTHESIS);
+        subtractions_mode = MainActivity.prefConfig.loadFlashAnzanDataBoolean(PrefConfig.FLASH_ANZAN_SUBTRACTIONS);
+    }
+
+    private void initializeViewParamElementsWithLoadedData(){
+        num_digits_edittext.setText(num_digits == null ? default_num_digits.toString() : num_digits.toString());
+        num_rows_edittext.setText(num_rows == null ? default_num_rows.toString() : num_rows.toString());
+        timeout_edittext.setText(num_timeout == null ? default_num_timeout.toString() : num_timeout.toString());
+        flash_timeout_edittext.setText(flash_timeout == null ? default_flash_timeout.toString() : flash_timeout.toString());
+        continuous_mode_switch.setChecked(continuous_mode);
+        subtractions_switch.setChecked(subtractions_mode);
+        speech_synthesis_switch.setChecked(speech_synthesis);
+    }
+
+    private void initializeViewElements(){
         num_digits_edittext = Objects.requireNonNull(getView()).findViewById(R.id.num_digits_row_edittext);
         num_rows_edittext = getView().findViewById(R.id.num_rows_row_edittext);
         timeout_edittext = getView().findViewById(R.id.timeout_row_edittext);
@@ -210,13 +246,26 @@ public class FlashAnzan extends Fragment {
         num_display_textview = getView().findViewById(R.id.num_display_textview);
         settings_table_tablelayout = getView().findViewById(R.id.settings_table);
         settings_table_tablelayout2 = getView().findViewById(R.id.settings_table2);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        loadPreviousDataFromConfigFile();
+        initializeViewElements();
+        initializeViewParamElementsWithLoadedData();
 
         num_display_textview.setText("Ready");
         show_answer_button.setVisibility(View.GONE);
 
+        speech_synthesis_switch.setEnabled(false);
+        continuous_mode_switch.setEnabled(false);
+
 
         begin_button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+                MainActivity.prefConfig.saveDataFlashAnzan(num_rows.toString(), num_digits.toString(),
+                        num_timeout.toString(), flash_timeout.toString(), subtractions_mode, speech_synthesis,
+                        continuous_mode);
                 if(is_running){
                     update_gui(true);
                 }
