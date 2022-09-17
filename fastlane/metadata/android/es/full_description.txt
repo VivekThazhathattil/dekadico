@@ -1,0 +1,17 @@
+Es una aplicación de entrenamiento de la memoria, que está destinada a aquellos interesados ​​en mejorar sus habilidades de memorización y recuperación de números hablados. 'Números hablados' es una disciplina en todas las competencias de memoria. El objetivo es memorizar y recordar tantos números hablados como sea posible, que se leen a un ritmo de 1 dígito por segundo. Mejorar en esa habilidad no solo mejoraría tus habilidades de memoria, sino que también mejoraría tu enfoque y concentración. Memorizar es divertido, ¡pruébalo!
+
+Características
+
+- [¡Nuevo!] incluye entrenador Flash Anzan
+- Pantalla mínima, sin desorden
+- Retraso de tiempo personalizable entre números hablados
+- Sin restricciones de tiempo en general
+- Sistema de recuperación fácil de usar
+- Aumente/Disminuya los retrasos de tiempo sobre la marcha, para ajustarse a su velocidad de memorización actual
+- El usuario ahora puede elegir entre voz masculina o femenina.
+- Elige entre números binarios y decimales para practicar.
+- Guardar opciones y preferencias automáticamente.
+- interfaz de usuario mejorada
+- animación de transición entre ventanas
+- Modo de evaluación
+- Almacenar y mostrar Highscore

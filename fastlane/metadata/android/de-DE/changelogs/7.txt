@@ -1,3 +1,0 @@
-* Add highscore
-* Add transition effects
-* Add evaluation mode

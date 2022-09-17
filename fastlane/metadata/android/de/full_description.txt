@@ -1,0 +1,17 @@
+Es ist eine Gedächtnistrainings-App, die für diejenigen gedacht ist, die daran interessiert sind, ihre Fähigkeiten zum Auswendiglernen und Erinnern von gesprochenen Zahlen zu verbessern. „Spoken Numbers“ ist eine Disziplin in allen Gedächtniswettbewerben. Ziel ist es, möglichst viele gesprochene Zahlen zu merken und abzurufen, die mit einer Geschwindigkeit von 1 Ziffer pro Sekunde vorgelesen werden. Wenn Sie in einer solchen Fähigkeit besser werden, verbessern Sie nicht nur Ihre Gedächtnisfähigkeiten, sondern verbessern auch Ihren Fokus und Ihre Konzentration. Auswendiglernen macht Spaß, probieren Sie es aus!
+
+Merkmale
+
+- [Neu!] enthält den Flash Anzan-Trainer
+- Minimale, übersichtliche Anzeige
+- Anpassbare Zeitverzögerung zwischen gesprochenen Nummern
+- Keine Gesamtzeitbeschränkungen
+- Einfach zu bedienendes Rückrufsystem
+- Erhöhen/verringern Sie Zeitverzögerungen im laufenden Betrieb, um sie an Ihre aktuelle Speichergeschwindigkeit anzupassen
+- Der Benutzer kann jetzt zwischen männlicher und weiblicher Stimme wählen.
+- Wählen Sie zum Üben zwischen Binär- und Dezimalzahlen.
+- Auswahl und Einstellungen automatisch speichern.
+- verbesserte Benutzeroberfläche
+- Übergangsanimation zwischen Fenstern
+- Bewertungsmodus
+- Highscore speichern und anzeigen

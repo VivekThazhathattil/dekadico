@@ -2,6 +2,7 @@ It's a memory training app, which is intended for those interested in improving 
 
 Features
 
+- [New!] includes Flash Anzan trainer
 - Minimal, no clutter display
 - Customizable time delay between spoken numbers
 - No overall time restrictions

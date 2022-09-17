@@ -1,3 +1,0 @@
-* Fix screen orientation crash
-* Fix back button crash
-* Add light/dark mode
