@@ -63,7 +63,8 @@ The DekaDico repository is available under the MIT License.
 ### Screenshots
 
 <p>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2-memorize.png" width=200px />
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1-intro.png" width=200px />
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3-recall.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width=200px />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width=200px />
 </p>
