@@ -9,7 +9,6 @@ public class PrefConfig {
     public static final String SHARED_PREFS = "sharedPrefs";
 
     /* Spoken numbers module */
-    private static final String NIGHT_MODE = "is_night_mode";
     public static final String DELAYTIME = "delayTime";
     public static final String INCTIME = "incTime";
     public static final String ISFEMALE = "isFemale";
@@ -39,14 +38,13 @@ public class PrefConfig {
     }
 
     public void saveData(String delayTimeText, String incTimeText, boolean femaleChecked,
-                         boolean decimalChecked, boolean isEvalMode, boolean isNightMode){
+                         boolean decimalChecked, boolean isEvalMode){
         editor = sharedPreferences.edit();
             editor.putString(DELAYTIME, delayTimeText);
             editor.putString(INCTIME, incTimeText);
             editor.putBoolean(ISFEMALE, femaleChecked);
             editor.putBoolean(ISDECIMAL, decimalChecked);
             editor.putBoolean(EVALMODE, isEvalMode);
-            editor.putBoolean(NIGHT_MODE, isNightMode);
         editor.apply();
     }
 
@@ -127,14 +125,5 @@ public class PrefConfig {
 
     public int loadHighScore(){
         return (int)sharedPreferences.getInt(HIGHSCORE, 0);
-    }
-
-    public boolean loadNightModeChecked(){
-        return (boolean)sharedPreferences.getBoolean(NIGHT_MODE, false);
-    }
-    public void saveNightModeChecked(boolean isNightMode){
-        editor = sharedPreferences.edit();
-        editor.putBoolean(NIGHT_MODE, isNightMode);
-        editor.apply();
     }
 }

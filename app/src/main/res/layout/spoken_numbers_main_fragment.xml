@@ -47,7 +47,6 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/colorPrimaryDark"
             android:text="@string/high_score" />
 
             <LinearLayout
@@ -81,6 +80,7 @@
                     android:contentDescription="The amount of time the user wishes to manually increment or decrement the original time interval"
                     android:ems="10"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -108,6 +108,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -188,16 +189,6 @@
                 android:checked="true"
                 android:textSize="20sp"
                 android:text="@string/evaluation_mode" />
-
-            <Switch
-                android:id="@+id/night_mode_switch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:textSize="20sp"
-                android:text="@string/night_mode" />
 
         </LinearLayout>
 

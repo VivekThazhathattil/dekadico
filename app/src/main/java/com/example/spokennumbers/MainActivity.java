@@ -10,12 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -26,13 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int CONTENT_VIEW_ID = 10101010;
 
     private FragmentManager fragmentManager;
-    /* when I started out with this project, spoken numbers
-    * was the only game that I intended to add to this app.
-    *  So mainFragment is for the Spoken numbers module */
     private spoken_numbers_main_fragment mainFragment;
     private spoken_numbers_ingame_fragment ingameFragment;
     private spoken_numbers_recall_fragment recallFragment;
     private EvaluationFragment evaluationFragment;
+
+    private Boolean is_night_mode = false;
 
     private FlashAnzan flashAnzanFragment;
     private GamesMenu gamesMenuFragment;
@@ -128,11 +133,45 @@ public class MainActivity extends AppCompatActivity {
         }
         fragmentTransaction.commit();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.dekadico_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch(menuItem.getItemId()){
+            case R.id.toggle_dark_mode:
+                if(!is_night_mode){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    is_night_mode = true;
+                }
+                else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    is_night_mode = false;
+                }
+                return true;
+            case R.id.github_link:
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("https://github.com/VivekThazhathattil/dekadico"));
+                startActivity(viewIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FrameLayout frame = new FrameLayout(this);
         frame.setId(CONTENT_VIEW_ID);
+
+        is_night_mode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
 
        // setContentView(R.layout.activity_main);
         setContentView(frame, new FrameLayout.LayoutParams(
@@ -171,5 +210,14 @@ public class MainActivity extends AppCompatActivity {
             ingameFragment.stopCountDownTimer();
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public void recreate(){
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        startActivity(getIntent());
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

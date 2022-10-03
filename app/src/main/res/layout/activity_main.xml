@@ -24,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_delay_input"
-        app:srcCompat="@drawable/ic_speaker" />
+       />
 
     <Button
         android:id="@+id/recall_button"

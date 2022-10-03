@@ -35,7 +35,7 @@
                     android:ems="10"
                     android:hint="Default: 3"
                     android:inputType="number"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -58,7 +58,7 @@
                     android:ems="10"
                     android:hint="Default: 5"
                     android:inputType="number"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -81,7 +81,7 @@
                     android:ems="10"
                     android:hint="Default: 1000"
                     android:inputType="number"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -104,7 +104,7 @@
                     android:ems="10"
                     android:hint="Default: 1000 ms"
                     android:inputType="number"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
             </TableRow>
 

@@ -8,24 +8,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/spoken_numbers_game_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/textColor"
-            android:layout_margin="5dp"
-            android:text="Spoken Numbers" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_button_with_states"
+            android:text="Spoken Numbers"
+            android:textColor="@color/textColor" />
 
         <Button
             android:id="@+id/flash_anzan_game_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/textColor"
-            android:layout_margin="5dp"
-            android:text="Flash Anzan" />
+            android:layout_margin="10dp"
+            android:background="@drawable/round_button_with_states"
+            android:text="Flash Anzan"
+            android:textColor="@color/textColor" />
     </LinearLayout>
 </FrameLayout>

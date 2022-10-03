@@ -6,15 +6,17 @@
         <entry key="app/src/main/res/drawable/border_fancy.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_bg_basic.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_bg_latest.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/ic_settings_subitem_icon.xml" value="0.19722222222222222" />
         <entry key="app/src/main/res/drawable/icon_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_edittext.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout-v21/spoken_numbers_eval_fragment.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.175" />
-        <entry key="app/src/main/res/layout/fragment_flash_anzan.xml" value="0.18958333333333333" />
-        <entry key="app/src/main/res/layout/fragment_games_menu.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/layout/fragment_flash_anzan.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_games_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/spoken_numbers_eval_fragment.xml" value="0.175" />
         <entry key="app/src/main/res/layout/spoken_numbers_ingame_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/spoken_numbers_main_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/spoken_numbers_main_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/dekadico_menu.xml" value="0.13518518518518519" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/icon.xml" value="0.1" />
       </map>
     </option>

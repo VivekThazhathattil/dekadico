@@ -83,32 +83,6 @@ public class spoken_numbers_main_fragment extends Fragment {
         boolean evalState = MainActivity.prefConfig.loadEvalModeChecked();
         evalSwitch.setChecked(evalState);
 
-        Switch nightSwitch = Objects.requireNonNull(getView()).findViewById(R.id.night_mode_switch);
-        boolean isNightModeOn = MainActivity.prefConfig.loadNightModeChecked();
-        nightSwitch.setChecked(isNightModeOn);
-        if(isNightModeOn)
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        else
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-        nightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                if(isChecked){
-//                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                }
-//                else {
-//                    MainActivity.this.recreate();
-//                }
-                MainActivity.prefConfig.saveNightModeChecked(isChecked);
-                Toast toast = Toast.makeText(getContext(), "Restart app to apply theme changes.", Toast.LENGTH_SHORT);
-                toast.setMargin(50, 50);
-                toast.show();
-            }
-        });
-
-
         TextView highScoreText = getView().findViewById(R.id.high_score_view);
         int highScoreInt = MainActivity.prefConfig.loadHighScore();
         String highScoreStr = "High Score:  " + highScoreInt;
@@ -167,7 +141,7 @@ public class spoken_numbers_main_fragment extends Fragment {
                 MainActivity.evaluationMode = evalSwitch.isChecked();
 
                 MainActivity.prefConfig.saveData(Float.toString(timeDelayNum),
-                        Float.toString(timeIncNum), isFemaleVoice, isDecimal, MainActivity.evaluationMode, false);
+                        Float.toString(timeIncNum), isFemaleVoice, isDecimal, MainActivity.evaluationMode);
                 ((MainActivity) Objects.requireNonNull(getActivity())).switchToInGameFragment(timeDelayNum, timeIncNum, isFemaleVoice, isDecimal);
             }
         });

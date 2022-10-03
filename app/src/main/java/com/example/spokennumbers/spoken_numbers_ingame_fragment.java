@@ -99,7 +99,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
         final Button incrementButton = getView().findViewById(R.id.time_increment);
         final TextView currentTimeTextView = getView().findViewById(R.id.current_time_control_text);
 
-        String currTimeText = timeDelay + "s";
+        String currTimeText = String.format("%.3f", timeDelay) + "s";
         currentTimeTextView.setText(currTimeText);
 
         String timeIncStr = "+" + timeInc;
@@ -117,7 +117,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
 
         incrementButton.setOnClickListener(v -> {
              timeDelay += timeInc;
-            String currTimeText12 = timeDelay + "s";
+            String currTimeText12 = String.format("%.3f", timeDelay) + "s";
             currentTimeTextView.setText(currTimeText12);
             timer.cancel();
              timer = setupTimer(defaultMillisLeft, timeDelay);
@@ -129,7 +129,7 @@ public class spoken_numbers_ingame_fragment extends Fragment {
                return;
             }
             timeDelay -= timeInc;
-            String currTimeText1 = timeDelay + "s";
+            String currTimeText1 = String.format("%.3f", timeDelay) + "s";
             currentTimeTextView.setText(currTimeText1);
             timer.cancel();
             timer = setupTimer(defaultMillisLeft, timeDelay);

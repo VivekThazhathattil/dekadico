@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/toggle_dark_mode"
+        android:icon = "@drawable/ic_dark_mode_icon"
+        android:title= "Toggle Dark Mode"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/github_link"
+        android:icon = "@drawable/ic_info_icon"
+        android:title= "Go to GitHub Repo"
+        app:showAsAction="ifRoom" />
+</menu>
